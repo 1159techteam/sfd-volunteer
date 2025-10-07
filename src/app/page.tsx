@@ -399,7 +399,7 @@ export default function Home() {
                             setUniversity("");
                             setDepartment("");
                             setAvailability("");
-                            setSelectedRoles("  ");
+                            // setSelectedRoles("  ");
                           } catch (error) {
                             console.error("Submission Error:", error);
                             setStatus("error");
