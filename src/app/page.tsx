@@ -490,7 +490,11 @@ export default function Home() {
                         </p>
 
                         <div className="space-y-2 max-h-48 overflow-y-auto pr-2">
-                          {["Protocol", "Ushering"].map((role) => (
+                          {[
+                            "Media/Publicity",
+                            "Protocol/Ushering",
+                            "Publicity",
+                          ].map((role) => (
                             <label
                               key={role}
                               className="flex items-center space-x-2 text-gray-300"
