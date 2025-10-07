@@ -347,12 +347,18 @@ export default function Home() {
                               !phone ||
                               !email ||
                               !state ||
-                              !city ||
-                              !university
+                              !city
                             ) {
                               setStatus("error");
                               setErrorMessage(
                                 'All fields with "*" are required'
+                              );
+                              return;
+                            }
+                            if (!selectedRoles.length) {
+                              setStatus("error");
+                              setErrorMessage(
+                                "Please select at least one role"
                               );
                               return;
                             }
@@ -452,11 +458,10 @@ export default function Home() {
 
                         <input
                           type="text"
-                          placeholder="University/Organization *"
+                          placeholder="University/Organization "
                           className="w-full p-3 bg-gray-900 border border-gray-700 rounded focus:ring-2 focus:ring-[#D4AF37]"
                           value={university}
                           onChange={(e) => setUniversity(e.target.value)}
-                          required
                         />
 
                         <input
@@ -465,7 +470,6 @@ export default function Home() {
                           className="w-full p-3 bg-gray-900 border border-gray-700 rounded focus:ring-2 focus:ring-[#D4AF37]"
                           value={department}
                           onChange={(e) => setDepartment(e.target.value)}
-                          required
                         />
 
                         {/* <div className="space-y-2">

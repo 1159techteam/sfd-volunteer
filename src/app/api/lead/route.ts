@@ -31,15 +31,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Validate required fields
-    if (
-      !fullName ||
-      !phone ||
-      !state ||
-      !city ||
-      !university ||
-      !department ||
-      !availability
-    ) {
+    if (!fullName || !phone || !state || !city) {
       return NextResponse.json(
         { error: "All fields are required" },
         { status: 400 }
@@ -97,9 +89,7 @@ export async function POST(request: NextRequest) {
 
     // Append new row
     const timestamp = new Date().toISOString();
-    const volunteerRoles = roles
-      ? JSON.parse(roles).join(", ")
-      : "None selected";
+    const volunteerRoles = roles;
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: GOOGLE_SHEET_ID,
