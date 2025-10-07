@@ -12,7 +12,7 @@ export default function Home() {
   const [university, setUniversity] = useState("");
   const [department, setDepartment] = useState("");
   const [availability, setAvailability] = useState("");
-  const [selectedRoles, setSelectedRoles] = useState<string[]>([]);
+  const [selectedRoles, setSelectedRoles] = useState<string>("");
   const [status, setStatus] = useState<
     "idle" | "loading" | "success" | "error"
   >("idle");
@@ -26,9 +26,17 @@ export default function Home() {
     setIsVisible(true);
   }, []);
 
-  const whatsappGroupLink =
-    process.env.WHATSAPPGROUPLINK ||
-    "https://chat.whatsapp.com/KSNsQXog1MCKFa1oec44";
+  const isProtocolUshering = selectedRoles === "Protocol/Ushering";
+  const isLogistics = selectedRoles === "Logistics";
+  const isMediaPublicity = selectedRoles === "Media/Publicity";
+
+  const whatsappGroupLink = isProtocolUshering
+    ? process.env.PROTOCOLWHATSAPPGROUPLINK || ""
+    : isLogistics
+    ? process.env.LOGISTICSWHATSAPPGROUPLINK || ""
+    : isMediaPublicity
+    ? process.env.MEDIAPUBLICITYWHATSAPPGROUPLINK || ""
+    : "";
 
   // Horizontal scroll tracking
   useEffect(() => {
@@ -305,7 +313,8 @@ export default function Home() {
                       </h3>
                       <p className="mb-6 text-gray-200">
                         We would love to connect with you. Tap the button below
-                        to join our WhatsApp community and stay updated.
+                        to join our {selectedRoles} WhatsApp community and stay
+                        updated.
                       </p>
 
                       <a
@@ -383,7 +392,7 @@ export default function Home() {
                             setUniversity("");
                             setDepartment("");
                             setAvailability("");
-                            setSelectedRoles([]);
+                            setSelectedRoles("  ");
                           } catch (error) {
                             console.error("Submission Error:", error);
                             setStatus("error");
@@ -493,7 +502,7 @@ export default function Home() {
                           {[
                             "Media/Publicity",
                             "Protocol/Ushering",
-                            "Publicity",
+                            "Logistics",
                           ].map((role) => (
                             <label
                               key={role}
@@ -503,8 +512,8 @@ export default function Home() {
                                 type="radio"
                                 name="role"
                                 value={role}
-                                checked={selectedRoles.includes(role)}
-                                onChange={() => setSelectedRoles([role])}
+                                checked={selectedRoles === role}
+                                onChange={() => setSelectedRoles(role)}
                                 className="rounded border-gray-600 text-[#D4AF37] focus:ring-[#D4AF37]"
                               />
                               <span className="text-sm">{role}</span>
