@@ -79,9 +79,18 @@ export async function POST(request: NextRequest) {
       (row) => row[0]?.trim().toLowerCase() === email.trim().toLowerCase()
     );
 
+    const phoneExists = rows.some((row) => row[4]?.trim() === phone.trim());
+
     if (emailExists) {
       return NextResponse.json(
         { error: "Email already registered" },
+        { status: 409 }
+      );
+    }
+
+    if (phoneExists) {
+      return NextResponse.json(
+        { error: "Phone number already registered" },
         { status: 409 }
       );
     }
@@ -102,7 +111,7 @@ export async function POST(request: NextRequest) {
             email.trim(),
             fullName.trim(),
             timestamp,
-            "Volunteers",
+            "SFD_Volunteers",
             phone.trim(),
             state.trim(),
             city.trim(),
