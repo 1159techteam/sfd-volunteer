@@ -31,16 +31,17 @@ export default function Home() {
   const isMediaPublicity = selectedRoles === "Media/Publicity";
 
   const whatsappGroupLink = isProtocolUshering
-    ? process.env.PROTOCOLWHATSAPPGROUPLINK || ""
+    ? "https://chat.whatsapp.com/Eh6guXXGZjx4thWW6zg5la?mode=ems_copy_t"
     : isLogistics
-    ? process.env.LOGISTICSWHATSAPPGROUPLINK || ""
+    ? "https://chat.whatsapp.com/GevY3ETR6Ac75LLLlPxRXb?mode=ems_copy_t"
     : isMediaPublicity
-    ? process.env.MEDIAPUBLICITYWHATSAPPGROUPLINK || ""
+    ? "https://chat.whatsapp.com/BeeUoFGZT29HjKh1o6eMDn?mode=ems_copy_t"
     : "";
 
   // Horizontal scroll tracking
   useEffect(() => {
     const container = scrollContainerRef.current;
+    console.log(whatsappGroupLink || "JSDJ");
     if (!container) return;
 
     const handleScroll = () => {
