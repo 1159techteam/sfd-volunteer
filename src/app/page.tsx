@@ -459,7 +459,7 @@ export default function Home() {
                           required
                         />
 
-                        <div className="space-y-2">
+                        {/* <div className="space-y-2">
                           <label className="text-gray-300 text-sm font-medium">
                             Availability
                           </label>
@@ -480,7 +480,7 @@ export default function Home() {
                               Afternoon Session Only
                             </option>
                           </select>
-                        </div>
+                        </div> */}
 
                         <h3 className="text-lg font-semibold text-[#D4AF37] mb-2 mt-6">
                           🛠️ Volunteer Role Preference
