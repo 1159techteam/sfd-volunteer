@@ -31,7 +31,7 @@ export default function Home() {
   const isMediaPublicity = selectedRoles === "Media/Publicity";
 
   const whatsappGroupLink = isProtocolUshering
-    ? "https://chat.whatsapp.com/Eh6guXXGZjx4thWW6zg5la?mode=ems_copy_t"
+    ? "https://chat.whatsapp.com/IQNcycOWXLaLu2d2GBPxP5?mode=ems_copy_t"
     : isLogistics
     ? "https://chat.whatsapp.com/GevY3ETR6Ac75LLLlPxRXb?mode=ems_copy_t"
     : isMediaPublicity
